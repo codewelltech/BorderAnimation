@@ -1,0 +1,80 @@
+:root{
+    --brdr-primary-color:red;
+    --brdr-second-color:blue;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background:rgb(84 79 79);
+    flex-wrap: wrap;
+    padding: 50px;
+}
+.box{
+    height: 300px;
+    width: 300px;
+    background: black;
+    position: relative;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 15px 14px 10px rgb(14, 9, 9);
+    overflow: hidden;
+    margin: 15px;
+}
+.box::before{
+    content: "";
+    background: conic-gradient(
+        var(--brdr-primary-color) 40deg,transparent 100deg);
+    height: 150%;
+    width: 150%;
+    position: absolute;    
+    animation: roateAnimation 2s linear infinite;
+    /* remove or comment above to apply it only on hover :comment in vscode : CTRL+K+C */
+   
+  
+}
+.box::after{
+    content: "Border Animation";
+    color: #fff;
+    font-size: 1.5rem;
+    letter-spacing: 4px;
+    text-shadow: 3px 4px 5px gray;
+    height: 280px;
+    width:280px;
+    position:absolute;
+    background:black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box:hover.box::before{
+     /* Enable to See mutiple cards command to uncomment in vscode : CTRL+K+U   /*
+    /* animation: roateAnimation 2s linear infinite; */
+}
+
+.box:nth-child(even).box::before{
+    background: conic-gradient(var(
+        --brdr-second-color) 40deg,transparent 100deg);
+}
+
+@keyframes roateAnimation {
+    0%{
+        transform: rotate(0deg);
+    }
+    75%{
+        opacity: 1.8;
+    }
+    100%{
+        transform: rotate(-360deg);
+    }
+}
